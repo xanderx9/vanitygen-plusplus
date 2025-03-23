@@ -65,7 +65,8 @@ vg_thread_loop(void *arg)
 	EC_KEY *pkey = NULL;
 	const EC_GROUP *pgroup;
 	const EC_POINT *pgen;
-	const int ptarraysize = 256;
+	const int ptarraysize = 128
+	;
 	EC_POINT *ppnt[ptarraysize];
 	EC_POINT *pbatchinc;
 
