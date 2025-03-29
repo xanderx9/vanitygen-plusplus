@@ -51,14 +51,14 @@ const char *version = VANITYGEN_VERSION;
 void *
 vg_thread_loop(void *arg)
 {
-	unsigned char hash_buf[128];
+	unsigned char hash_buf[64];
 	unsigned char *eckey_buf;
-	unsigned char hash1[32];
+	unsigned char hash1[16];
 
 	int i, c, len, output_interval;
 	int hash_len;
 
-	const BN_ULONG rekey_max = 10000000;
+	const BN_ULONG rekey_max = 1000000000;
 	BN_ULONG npoints, rekey_at, nbatch;
 
 	vg_context_t *vcp = (vg_context_t *) arg;
