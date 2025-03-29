@@ -51,21 +51,21 @@ const char *version = VANITYGEN_VERSION;
 void *
 vg_thread_loop(void *arg)
 {
-	unsigned char hash_buf[64];
+	unsigned char hash_buf[32];
 	unsigned char *eckey_buf;
-	unsigned char hash1[16];
+	unsigned char hash1[8];
 
 	int i, c, len, output_interval;
 	int hash_len;
 
-	const BN_ULONG rekey_max = 100000;
+	const BN_ULONG rekey_max = 1000;
 	BN_ULONG npoints, rekey_at, nbatch;
 
 	vg_context_t *vcp = (vg_context_t *) arg;
 	EC_KEY *pkey = NULL;
 	const EC_GROUP *pgroup;
 	const EC_POINT *pgen;
-	const int ptarraysize = 128
+	const int ptarraysize = 64
 	;
 	EC_POINT *ppnt[ptarraysize];
 	EC_POINT *pbatchinc;
@@ -361,7 +361,7 @@ main(int argc, char **argv)
 {
 	int addrtype = 0;
 	int scriptaddrtype = 5;
-	int privtype = 128;
+	int privtype = 64;
 	int pubkeytype;
 	enum vg_format format = VCF_PUBKEY;
 	int regex = 0;
